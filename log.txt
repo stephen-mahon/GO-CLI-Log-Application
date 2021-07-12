@@ -1,2 +1,0 @@
-INFO: 2021/07/11 12:03:20 log.go:36: This is an information message.
-2021/07/11 12:03:20 open log.txt: Access is denied.

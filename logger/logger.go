@@ -1,8 +1,5 @@
 package main
 
-// To do
-// [ ] some bug with the file permission type
-
 import (
 	"log"
 	"os"
@@ -18,20 +15,34 @@ const (
 )
 
 func main() {
-	writeLog(INFO, "This is an information message.")
-	writeLog(WARNING, "This is an warning message.")
-	writeLog(ERROR, "This is an error message.")
-	writeLog(FATAL, "We crashed.")
-	writeLog(INFO, "You should not see this message.")
+	//log.Println("This is a log message!")
+
+	/* 
+	file, err := os.OpenFile("logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	 */
+
+	//log.SetOutput(file)
+	//log.Println("This is a log message!")
+
+	writeLog(INFO, "this is an information message!")
+	writeLog(WARNING, "this is a warning")
+	writeLog(ERROR, "this is an error")
+	writeLog(FATAL, "we crashed")
+	writeLog(INFO, "you'll never see this message!")
 
 }
 
 func writeLog(messagetype messageType, message string) {
-	file, err := os.OpenFile("log.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 066)
+
+	file, err := os.OpenFile("log.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.SetOutput(file)
 
 	switch messagetype {
 	case INFO:
